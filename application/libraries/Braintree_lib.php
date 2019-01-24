@@ -13,20 +13,20 @@ class Braintree_lib{
 
 	protected $gateway;
 
-		function __construct() {
-			$CI = &get_instance();
-			$CI->config->load('braintree', TRUE); // load configuration from file
-			$braintree = $CI->config->item('braintree');
-			// configutation Lib => application/config/braintree => SET YOUR DATA
-			$config = new Braintree_Configuration([
-				'environment' => $braintree['braintree_environment'],
-				'merchantId' => $braintree['braintree_merchant_id'],
-				'publicKey' => $braintree['braintree_public_key'],
-				'privateKey' => $braintree['braintree_private_key']
-			]);
-			$this->gateway = new Braintree\Gateway($config);
+	function __construct() {
+		$CI = &get_instance();
+		$CI->config->load('braintree', TRUE); // load configuration from file
+		$braintree = $CI->config->item('braintree');
+		// configutation Lib => application/config/braintree => SET YOUR DATA
+		$config = new Braintree_Configuration([
+			'environment' => $braintree['braintree_environment'],
+			'merchantId' => $braintree['braintree_merchant_id'],
+			'publicKey' => $braintree['braintree_public_key'],
+			'privateKey' => $braintree['braintree_private_key']
+		]);
+		$this->gateway = new Braintree\Gateway($config);
 
-		}
+	}
 
     function create_client_token(){
 		//$clientToken = Braintree_ClientToken::generate();
